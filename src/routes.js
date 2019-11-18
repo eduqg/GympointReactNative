@@ -1,7 +1,7 @@
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 
-import Sign from '~/Sign';
-import Checkin from '~/Checkin';
+import Sign from '~/pages/Sign';
+import Checkin from '~/pages/Checkin';
 
 // Switch navigator = apenas carrega uma página por vez
 export default createAppContainer(

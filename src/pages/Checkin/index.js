@@ -1,12 +1,14 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
+import Background from '~/components/Background';
+
 // import { Container } from './styles';
 
 export default function Checkin() {
   return (
-    <View>
+    <Background>
       <Text>Checkin</Text>
-    </View>
+    </Background>
   );
 }

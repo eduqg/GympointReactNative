@@ -10,7 +10,7 @@ import App from './App';
 export default function Index() {
   return (
     <>
-      <StatusBar barStyle="light-content" backgroundColor="#ff0000" />
+      <StatusBar barStyle="light-content" backgroundColor="#f84e62" />
       <App />
     </>
   );
