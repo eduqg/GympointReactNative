@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import AsyncStorage from '@react-native-community/async-storage';
 import { Alert } from 'react-native';
 import { parseISO, formatRelative } from 'date-fns';
@@ -6,15 +7,27 @@ import pt from 'date-fns/locale/pt';
 
 import api from '~/services/api';
 
+import { createCheckinRequest } from '~/store/modules/checkin/actions';
+
 import Background from '~/components/Background';
 import Button from '~/components/Button';
 
-import { Container, List, CheckBar, CheckNumber, CheckDate } from './styles';
+import {
+  Container,
+  List,
+  CheckBar,
+  CheckNumber,
+  CheckDate,
+  NumberCheckins,
+  NumberBold,
+} from './styles';
 import { BarImage, BarButton, BarText } from '~/styles/HeaderStyle';
 import headerlogo from '~/assets/halter.png';
 
 export default function Checkin() {
+  const dispatch = useDispatch();
   const [checks, setChecks] = useState([]);
+  const numberCheckins = useSelector(state => state.checkin.numberCheckins);
 
   function parseData(allChecks) {
     const allNewDates = allChecks.map(item => {
@@ -46,20 +59,27 @@ export default function Checkin() {
     getCheckings();
   }, []); // eslint-disable-line
 
-  function handleCreateChekin() {}
+  async function handleCreateCheckin() {
+    const userId = await AsyncStorage.getItem('userId');
+    dispatch(createCheckinRequest(userId));
+  }
 
   return (
     <Background>
       <Container>
-        <Button onPress={() => handleCreateChekin()} loading={false}>
+        <Button onPress={() => handleCreateCheckin()} loading={false}>
           Novo check-in
         </Button>
+        <NumberCheckins>
+          Checkins nos últimos 7 dias:{' '}
+          <NumberBold>{numberCheckins + 1} de 5.</NumberBold>
+        </NumberCheckins>
         <List
           data={checks}
           keyExtractor={item => String(item.id)}
           renderItem={({ item, index }) => (
             <CheckBar>
-              <CheckNumber>Check-in #{index}</CheckNumber>
+              <CheckNumber>Check-in #{index + 1}</CheckNumber>
               <CheckDate>{item.formated}</CheckDate>
             </CheckBar>
           )}

@@ -18,7 +18,7 @@ export const CheckBar = styled.View`
   min-width: 240;
   justify-content: space-between;
   text-align: center;
-  margin-top: 12;
+  margin-bottom: 12;
   border-width: 1;
   border-color: rgba(0, 0, 0, 0.1);
   border-radius: 4;
@@ -33,4 +33,16 @@ export const CheckNumber = styled.Text`
 
 export const CheckDate = styled.Text`
   color: rgba(0, 0, 0, 0.4);
+`;
+
+export const NumberCheckins = styled.Text`
+  margin-top: 10;
+  color: rgba(0, 0, 0, 0.3);
+  font-size: 14;
+`;
+
+export const NumberBold = styled.Text`
+  color: #f84e62;
+  font-size: 16;
+  font-weight: bold;
 `;
