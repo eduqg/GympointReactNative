@@ -10,6 +10,8 @@ export const List = styled.FlatList.attrs({
   contentContainerStyle: { padding: 30 },
 })``;
 
+export const ButtonCard = styled.TouchableOpacity``;
+
 export const Card = styled.View`
   background: #fff;
   margin-bottom: 16;
