@@ -19,7 +19,7 @@ export default function Sign({ navigation }) {
     try {
       AsyncStorage.getItem('userId').then(userId => {
         if (userId) {
-          navigation.navigate('HelpOrders', { userId });
+          navigation.navigate('HelpOrderList', { userId });
         }
       });
     } catch (error) {
@@ -37,7 +37,7 @@ export default function Sign({ navigation }) {
 
       setUser('');
 
-      navigation.navigate('HelpOrders', { user: id });
+      navigation.navigate('HelpOrderList', { user: id });
     } catch (error) {
       Alert.alert('Falha ao entrar', 'Usuário não encontrado');
     }

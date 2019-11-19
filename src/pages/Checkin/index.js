@@ -12,3 +12,7 @@ export default function Checkin() {
     </Background>
   );
 }
+
+Checkin.navigationOptions = {
+  tabBarLabel: 'Checkin',
+};
