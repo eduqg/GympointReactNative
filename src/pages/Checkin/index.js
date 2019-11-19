@@ -1,7 +1,10 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { Text } from 'react-native';
 
 import Background from '~/components/Background';
+import { BarImage, BarButton, BarText } from '~/styles/HeaderStyle';
+
+import headerlogo from '~/assets/halter.png';
 
 // import { Container } from './styles';
 
@@ -13,6 +16,15 @@ export default function Checkin() {
   );
 }
 
-Checkin.navigationOptions = {
-  tabBarLabel: 'Checkin',
-};
+Checkin.navigationOptions = ({ navigation }) => ({
+  header: (
+    <BarButton onPress={() => navigation.navigate('HelpOrderList')}>
+      <BarImage source={headerlogo} />
+      <BarText>Gympoint</BarText>
+    </BarButton>
+  ),
+  headerStyle: {
+    backgroundColor: '#e3e3e3',
+  },
+  headerTintColor: '#606070',
+});

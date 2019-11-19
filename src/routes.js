@@ -14,6 +14,10 @@ import HelpOrderList from '~/pages/HelpOrder/List';
 import HelpOrderCreate from '~/pages/HelpOrder/Create';
 import HelpOrderResponse from '~/pages/HelpOrder/Response';
 
+import { BarImage, BarButton, BarText } from '~/styles/HeaderStyle';
+
+import headerlogo from '~/assets/halter.png';
+
 // Switch navigator = apenas carrega uma página por vez
 export default createAppContainer(
   createSwitchNavigator({
@@ -21,21 +25,28 @@ export default createAppContainer(
     App: createBottomTabNavigator(
       {
         'Check-ins': {
-          screen: createSwitchNavigator(
+          screen: createStackNavigator(
             {
               Checkin,
             },
             {
-              navigationOptions: {
-                tabBarVisible: true,
-                tabBarLabel: '',
-                tabBarLabelTintColor: '#f84e62',
-                tabBarIcon: ({ tintColor }) => (
-                  <Icon name="offline-pin" size={20} color={tintColor} />
-                ),
+              defaultNavigationOptions: {
+                headerTransparent: false,
+                headerTintColor: '#f84e62',
+                headerLeftContainerStyle: {
+                  marginLeft: 20,
+                },
               },
             }
           ),
+          navigationOptions: {
+            tabBarVisible: true,
+            tabBarLabel: '',
+            tabBarLabelTintColor: '#f84e62',
+            tabBarIcon: ({ tintColor }) => (
+              <Icon name="offline-pin" size={20} color={tintColor} />
+            ),
+          },
         },
         NewHelp: {
           screen: createStackNavigator(
