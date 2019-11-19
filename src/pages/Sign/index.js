@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import AsyncStorage from '@react-native-community/async-storage';
-import { View, Text } from 'react-native';
-import { Alert } from 'react-native';
+import { View, Text, Alert } from 'react-native';
 
 import api from '~/services/api';
 
@@ -16,6 +15,18 @@ import { Container, ImageSign } from './styles';
 export default function Sign({ navigation }) {
   const [user, setUser] = useState('');
 
+  useEffect(() => {
+    try {
+      AsyncStorage.getItem('userId').then(userId => {
+        if (userId) {
+          navigation.navigate('HelpOrders', { userId });
+        }
+      });
+    } catch (error) {
+      Alert.alert('Falha ao obter usuário', 'Usuário não encontrado');
+    }
+  });
+
   async function handleLogin() {
     try {
       const response = await api.post('/students/sign', { name: user });
@@ -26,9 +37,9 @@ export default function Sign({ navigation }) {
 
       setUser('');
 
-      navigation.navigate('Checkin', { user: id });
+      navigation.navigate('HelpOrders', { user: id });
     } catch (error) {
-      Alert.alert('Falha ao entrar', 'Usuário não encontrado')
+      Alert.alert('Falha ao entrar', 'Usuário não encontrado');
     }
   }
 
@@ -43,7 +54,9 @@ export default function Sign({ navigation }) {
           value={user}
           onChangeText={setUser}
         />
-        <Button onPress={handleLogin} loading={false}>Entrar no sistema</Button>
+        <Button onPress={handleLogin} loading={false}>
+          Entrar no sistema
+        </Button>
       </Container>
     </Background>
   );
