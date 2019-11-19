@@ -14,10 +14,6 @@ import HelpOrderList from '~/pages/HelpOrder/List';
 import HelpOrderCreate from '~/pages/HelpOrder/Create';
 import HelpOrderResponse from '~/pages/HelpOrder/Response';
 
-import { BarImage, BarButton, BarText } from '~/styles/HeaderStyle';
-
-import headerlogo from '~/assets/halter.png';
-
 // Switch navigator = apenas carrega uma página por vez
 export default createAppContainer(
   createSwitchNavigator({
