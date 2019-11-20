@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import AsyncStorage from '@react-native-community/async-storage';
-import { Alert } from 'react-native';
 import { parseISO, formatRelative } from 'date-fns';
 import pt from 'date-fns/locale/pt';
 
-import api from '~/services/api';
-
-import { createCheckinRequest } from '~/store/modules/checkin/actions';
+import {
+  loadCheckingsRequest,
+  createCheckinRequest,
+} from '~/store/modules/checkin/actions';
 
 import Background from '~/components/Background';
 import Button from '~/components/Button';
@@ -20,40 +20,39 @@ import {
   CheckDate,
   NumberCheckins,
   NumberBold,
+  LoadingCheckings,
 } from './styles';
 import { BarImage, BarButton, BarText } from '~/styles/HeaderStyle';
 import headerlogo from '~/assets/halter.png';
 
 export default function Checkin() {
   const dispatch = useDispatch();
-  const [checks, setChecks] = useState([]);
+  const loading = useSelector(state => state.checkin.loading);
   const numberCheckins = useSelector(state => state.checkin.numberCheckins);
 
   function parseData(allChecks) {
-    const allNewDates = allChecks.map(item => {
-      const formated = formatRelative(parseISO(item.createdAt), new Date(), {
-        locale: pt,
-        addSuffix: true,
-        includeSeconds: true,
+    if (allChecks) {
+      const allNewDates = allChecks.map(item => {
+        const formated = formatRelative(parseISO(item.createdAt), new Date(), {
+          locale: pt,
+          addSuffix: true,
+          includeSeconds: true,
+        });
+        return { ...item, formated };
       });
-      return { ...item, formated };
-    });
-    return allNewDates;
+      return allNewDates;
+    }
+    return [];
   }
+
+  const allCheckins = useSelector(state =>
+    parseData(state.checkin.allCheckins)
+  );
 
   useEffect(() => {
     async function getCheckings() {
       const userId = await AsyncStorage.getItem('userId');
-      const response = await api.get(`/students/${userId}/checkins`);
-      if (response) {
-        const parsedData = await parseData(response.data);
-        setChecks(parsedData);
-      } else {
-        Alert.alert(
-          'Erro ao carregar checkins',
-          'Não foi possível carregar checkins'
-        );
-      }
+      dispatch(loadCheckingsRequest(userId));
     }
 
     getCheckings();
@@ -67,15 +66,16 @@ export default function Checkin() {
   return (
     <Background>
       <Container>
+        {loading ? <LoadingCheckings>Carregando...</LoadingCheckings> : null}
         <Button onPress={() => handleCreateCheckin()} loading={false}>
           Novo check-in
         </Button>
         <NumberCheckins>
           Checkins nos últimos 7 dias:{' '}
-          <NumberBold>{numberCheckins + 1} de 5.</NumberBold>
+          <NumberBold>{numberCheckins} de 5.</NumberBold>
         </NumberCheckins>
         <List
-          data={checks}
+          data={allCheckins}
           keyExtractor={item => String(item.id)}
           renderItem={({ item, index }) => (
             <CheckBar>

@@ -46,3 +46,10 @@ export const NumberBold = styled.Text`
   font-size: 16;
   font-weight: bold;
 `;
+
+export const LoadingCheckings = styled.Text`
+  margin-top: 10;
+  margin-bottom: 10;
+  color: rgba(0, 0, 0, 0.3);
+  font-size: 14;
+`;
