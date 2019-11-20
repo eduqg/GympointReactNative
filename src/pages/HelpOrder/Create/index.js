@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Text } from 'react-native';
-
+import Button from '~/components/Button';
 // import api from '~/services/api';
 
 import Background from '~/components/Background';
 
-import { Container } from './styles';
+import { Container, InputText } from './styles';
 import {
   Bar,
   BarImage,
@@ -18,10 +18,22 @@ import {
 import headerlogo from '~/assets/halter.png';
 
 export default function HelpOrderCreate() {
+  const [question, setQuestion] = useState('');
+
+  function handleCreateHelp() { }
   return (
     <Background>
       <Container>
-        <Text>Criar Pergunta</Text>
+        <InputText
+          placeholder="Inclua seu pedido de auxílio"
+          value={question}
+          onChangeText={setQuestion}
+          numberOfLines={4}
+          multiline
+        />
+        <Button onPress={() => handleCreateHelp()} loading={false}>
+          Enviar Pedido
+        </Button>
       </Container>
     </Background>
   );

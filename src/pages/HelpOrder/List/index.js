@@ -68,7 +68,7 @@ export default function HelpOrderList({ navigation }) {
           onPress={() => navigation.navigate('HelpOrderCreate')}
           loading={false}
         >
-          Entrar no sistema
+          Novo pedido de auxílio
         </Button>
 
         <List
