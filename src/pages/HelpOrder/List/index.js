@@ -110,7 +110,7 @@ export default function HelpOrderList({ navigation }) {
 
 HelpOrderList.navigationOptions = () => ({
   header: (
-    <BarButton onPress={() => { }}>
+    <BarButton onPress={() => {}}>
       <BarImage source={headerlogo} />
       <BarText>Gympoint</BarText>
     </BarButton>

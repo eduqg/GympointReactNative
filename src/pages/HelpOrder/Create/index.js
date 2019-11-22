@@ -27,9 +27,8 @@ export default function HelpOrderCreate() {
 
   function handleCreateHelp() {
     // Fazer a criação de um help
-    let userId = null;
     async function createHelp() {
-      userId = await AsyncStorage.getItem('userId');
+      const userId = await AsyncStorage.getItem('userId');
       const response = await api.post(`/students/${userId}/help-orders`, {
         question,
       });
@@ -45,9 +44,9 @@ export default function HelpOrderCreate() {
           'Não foi possível realizar pergunta, tente novamente mais tarde.'
         );
       }
+      dispatch(loadHelpordersRequest(userId));
     }
     createHelp();
-    dispatch(loadHelpordersRequest(userId));
   }
 
   return (
@@ -58,6 +57,7 @@ export default function HelpOrderCreate() {
           value={question}
           onChangeText={setQuestion}
           numberOfLines={4}
+          returnKeyType="send"
           multiline
         />
         <Button onPress={() => handleCreateHelp()} loading={false}>
