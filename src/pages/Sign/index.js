@@ -25,7 +25,7 @@ export default function Sign({ navigation }) {
     } catch (error) {
       Alert.alert('Falha ao obter usuário', 'Usuário não encontrado');
     }
-  });
+  }, []); // eslint-disable-line
 
   async function handleLogin() {
     try {

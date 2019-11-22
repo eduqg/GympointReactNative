@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import AsyncStorage from '@react-native-community/async-storage';
 import { Alert } from 'react-native';
@@ -6,7 +7,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import { parseISO, formatRelative } from 'date-fns';
 import pt from 'date-fns/locale/pt';
 
-import api from '~/services/api';
+import { loadHelpordersRequest } from '~/store/modules/helporder/actions';
 
 import Button from '~/components/Button';
 import Background from '~/components/Background';
@@ -27,10 +28,10 @@ import { BarImage, BarButton, BarText } from '~/styles/HeaderStyle';
 import headerlogo from '~/assets/halter.png';
 
 export default function HelpOrderList({ navigation }) {
-  const [helps, setHelps] = useState([]);
+  const dispatch = useDispatch();
 
-  function parseData(allChecks) {
-    const allNewDates = allChecks.map(item => {
+  function parseData(allHelporders) {
+    const allNewDates = allHelporders.map(item => {
       const formated = formatRelative(parseISO(item.updatedAt), new Date(), {
         locale: pt,
         addSuffix: true,
@@ -41,15 +42,17 @@ export default function HelpOrderList({ navigation }) {
     return allNewDates;
   }
 
-  useEffect(() => {
-    async function getCheckings() {
-      const userId = await AsyncStorage.getItem('userId');
-      const response = await api.get(`/students/${userId}/help-orders`);
-      const newList = await parseData(response.data);
-      setHelps(newList);
-    }
+  const helps = useSelector(state => parseData(state.helporder.allHelporders));
 
-    getCheckings();
+  useEffect(() => {
+    async function getHelporders() {
+      await AsyncStorage.getItem('userId').then(userId => {
+        if (userId) {
+          dispatch(loadHelpordersRequest(userId));
+        }
+      });
+    }
+    getHelporders();
   }, []); // eslint-disable-line
 
   async function logout() {
@@ -107,7 +110,7 @@ export default function HelpOrderList({ navigation }) {
 
 HelpOrderList.navigationOptions = () => ({
   header: (
-    <BarButton onPress={() => {}}>
+    <BarButton onPress={() => { }}>
       <BarImage source={headerlogo} />
       <BarText>Gympoint</BarText>
     </BarButton>
