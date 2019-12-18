@@ -14,6 +14,27 @@ import HelpOrderList from '~/pages/HelpOrder/List';
 import HelpOrderCreate from '~/pages/HelpOrder/Create';
 import HelpOrderResponse from '~/pages/HelpOrder/Response';
 
+const defaultOptions = () => {
+  return {
+    headerTransparent: false,
+    headerTintColor: '#f84e62',
+    headerLeftContainerStyle: {
+      marginLeft: 20,
+    },
+  };
+};
+
+const navigationOptions = (title, icon) => {
+  return {
+    tabBarVisible: true,
+    tabBarLabel: title,
+    tabBarLabelTintColor: '#f84e62',
+    tabBarIcon: ({ tintColor }) => (
+      <Icon name={icon} size={20} color={tintColor} />
+    ),
+  };
+};
+
 // Switch navigator = apenas carrega uma página por vez
 export default createAppContainer(
   createSwitchNavigator({
@@ -26,23 +47,10 @@ export default createAppContainer(
               Checkin,
             },
             {
-              defaultNavigationOptions: {
-                headerTransparent: false,
-                headerTintColor: '#f84e62',
-                headerLeftContainerStyle: {
-                  marginLeft: 20,
-                },
-              },
+              defaultNavigationOptions: defaultOptions(),
             }
           ),
-          navigationOptions: {
-            tabBarVisible: true,
-            tabBarLabel: '',
-            tabBarLabelTintColor: '#f84e62',
-            tabBarIcon: ({ tintColor }) => (
-              <Icon name="offline-pin" size={20} color={tintColor} />
-            ),
-          },
+          navigationOptions: navigationOptions('', 'offline-pin'),
         },
         NewHelp: {
           screen: createStackNavigator(
@@ -52,23 +60,10 @@ export default createAppContainer(
               HelpOrderResponse,
             },
             {
-              defaultNavigationOptions: {
-                headerTransparent: false,
-                headerTintColor: '#f84e62',
-                headerLeftContainerStyle: {
-                  marginLeft: 20,
-                },
-              },
+              defaultNavigationOptions: defaultOptions(),
             }
           ),
-          navigationOptions: {
-            tabBarVisible: true,
-            tabBarLabel: 'Pedir Ajuda',
-            tabBarLabelTintColor: '#f84e62',
-            tabBarIcon: ({ tintColor }) => (
-              <Icon name="help" size={20} color={tintColor} />
-            ),
-          },
+          navigationOptions: navigationOptions('Pedir Ajuda', 'help'),
         },
       },
       {
