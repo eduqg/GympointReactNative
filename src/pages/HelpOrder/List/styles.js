@@ -3,6 +3,7 @@ import styled from 'styled-components/native';
 export const Container = styled.View`
   flex: 1;
   align-items: center;
+  margin-bottom: 10;
 `;
 
 export const List = styled.FlatList.attrs({
@@ -46,4 +47,10 @@ export const CardHeaderDate = styled.Text`
 export const CardContent = styled.Text`
   color: rgba(0, 0, 0, 0.6);
   margin-top: 16;
+`;
+
+export const ButtonText = styled.Text`
+  color: #fff;
+  font-weight: bold;
+  font-size: 16px;
 `;

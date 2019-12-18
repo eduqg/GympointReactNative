@@ -11,7 +11,7 @@ import Background from '~/components/Background';
 
 import logo from '~/assets/gympoint.png';
 
-import { Container, ImageSign } from './styles';
+import { Container, ImageSign, ButtonText } from './styles';
 
 export default function Sign({ navigation }) {
   const [user, setUser] = useState('');
@@ -56,7 +56,7 @@ export default function Sign({ navigation }) {
           onChangeText={setUser}
         />
         <Button onPress={handleLogin} loading={false}>
-          Entrar no sistema
+          <ButtonText>Entrar no sistema</ButtonText>
         </Button>
       </Container>
     </Background>

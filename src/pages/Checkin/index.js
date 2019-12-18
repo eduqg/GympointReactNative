@@ -21,6 +21,7 @@ import {
   NumberCheckins,
   NumberBold,
   LoadingCheckings,
+  ButtonText,
 } from './styles';
 
 export default function Checkin() {
@@ -66,7 +67,7 @@ export default function Checkin() {
       <Container>
         {loading ? <LoadingCheckings>Carregando...</LoadingCheckings> : null}
         <Button onPress={() => handleCreateCheckin()} loading={false}>
-          Novo check-in
+          <ButtonText>Novo check-in</ButtonText>
         </Button>
         <NumberCheckins>
           Checkins nos últimos 7 dias:{' '}

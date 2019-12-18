@@ -9,7 +9,7 @@ import api from '~/services/api';
 import Background from '~/components/Background';
 import { loadHelpordersRequest } from '~/store/modules/helporder/actions';
 
-import { Container, InputText } from './styles';
+import { Container, InputText, ButtonText } from './styles';
 
 export default function HelpOrderCreate() {
   const dispatch = useDispatch();
@@ -51,7 +51,7 @@ export default function HelpOrderCreate() {
           multiline
         />
         <Button onPress={() => handleCreateHelp()} loading={false}>
-          Enviar Pedido
+          <ButtonText>Enviar Pedido</ButtonText>
         </Button>
       </Container>
     </Background>

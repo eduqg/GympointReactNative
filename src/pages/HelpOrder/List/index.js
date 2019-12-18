@@ -22,6 +22,7 @@ import {
   CardHeaderDate,
   CardHeaderResponse,
   CardContent,
+  ButtonText,
 } from './styles';
 
 export default function HelpOrderList({ navigation }) {
@@ -68,7 +69,7 @@ export default function HelpOrderList({ navigation }) {
           onPress={() => navigation.navigate('HelpOrderCreate')}
           loading={false}
         >
-          Novo pedido de auxílio
+          <ButtonText>Novo pedido de auxílio</ButtonText>
         </Button>
 
         <List
@@ -97,8 +98,9 @@ export default function HelpOrderList({ navigation }) {
             </ButtonCard>
           )}
         />
-        <Button onPress={logout} loading={false}>
-          Sair
+
+        <Button onPress={logout} loading={false} theme="outline" width={50}>
+          <Icon name="exit-to-app" size={24} color="#c7c7c7" />
         </Button>
       </Container>
     </Background>

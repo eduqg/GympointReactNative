@@ -13,3 +13,9 @@ export const InputText = styled(Input)`
   background: #fff;
   height: 250;
 `;
+
+export const ButtonText = styled.Text`
+  color: #fff;
+  font-weight: bold;
+  font-size: 16px;
+`;
