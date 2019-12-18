@@ -22,8 +22,6 @@ import {
   NumberBold,
   LoadingCheckings,
 } from './styles';
-import { BarImage, BarButton, BarText } from '~/styles/HeaderStyle';
-import headerlogo from '~/assets/halter.png';
 
 export default function Checkin() {
   const dispatch = useDispatch();
@@ -88,16 +86,3 @@ export default function Checkin() {
     </Background>
   );
 }
-
-Checkin.navigationOptions = ({ navigation }) => ({
-  header: (
-    <BarButton onPress={() => navigation.navigate('HelpOrderList')}>
-      <BarImage source={headerlogo} />
-      <BarText>Gympoint</BarText>
-    </BarButton>
-  ),
-  headerStyle: {
-    backgroundColor: '#e3e3e3',
-  },
-  headerTintColor: '#606070',
-});

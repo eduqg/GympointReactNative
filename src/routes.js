@@ -13,24 +13,59 @@ import Checkin from '~/pages/Checkin';
 import HelpOrderList from '~/pages/HelpOrder/List';
 import HelpOrderCreate from '~/pages/HelpOrder/Create';
 import HelpOrderResponse from '~/pages/HelpOrder/Response';
+import {
+  Bar,
+  BarImage,
+  BarButton,
+  BarText,
+  IconLeftButton,
+  IconLeft,
+} from '~/styles/HeaderStyle';
 
-const defaultOptions = () => {
-  return {
-    headerTransparent: false,
-    headerTintColor: '#f84e62',
-    headerLeftContainerStyle: {
-      marginLeft: 20,
-    },
-  };
-};
+import headerlogo from '~/assets/halter.png';
 
-const navigationOptions = (title, icon) => {
+const defaultOptions = (title, icon) => {
   return {
     tabBarVisible: true,
     tabBarLabel: title,
     tabBarLabelTintColor: '#f84e62',
     tabBarIcon: ({ tintColor }) => (
       <Icon name={icon} size={20} color={tintColor} />
+    ),
+    headerTransparent: false,
+    headerTintColor: '#f84e62',
+    headerLeftContainerStyle: {
+      marginLeft: 20,
+    },
+    headerStyle: {
+      backgroundColor: '#e3e3e3',
+    },
+  };
+};
+
+const navigationOptions = navigation => {
+  return {
+    header: (
+      <BarButton onPress={() => navigation.navigate('HelpOrderList')}>
+        <BarImage source={headerlogo} />
+        <BarText>Gympoint</BarText>
+      </BarButton>
+    ),
+  };
+};
+
+const navigationOptionsBack = navigation => {
+  return {
+    header: (
+      <Bar>
+        <IconLeftButton onPress={() => navigation.navigate('HelpOrderList')}>
+          <IconLeft name="chevron-left" size={30} />
+        </IconLeftButton>
+        <BarButton onPress={() => navigation.navigate('HelpOrderList')}>
+          <BarImage source={headerlogo} />
+          <BarText>Gympoint</BarText>
+        </BarButton>
+      </Bar>
     ),
   };
 };
@@ -47,23 +82,31 @@ export default createAppContainer(
               Checkin,
             },
             {
-              defaultNavigationOptions: defaultOptions(),
+              defaultNavigationOptions: ({ navigation }) =>
+                navigationOptions(navigation),
             }
           ),
-          navigationOptions: navigationOptions('', 'offline-pin'),
+          navigationOptions: defaultOptions('Check-ins', 'offline-pin'),
         },
         NewHelp: {
-          screen: createStackNavigator(
-            {
-              HelpOrderList,
-              HelpOrderCreate,
-              HelpOrderResponse,
+          screen: createStackNavigator({
+            HelpOrderList: {
+              screen: HelpOrderList,
+              navigationOptions: ({ navigation }) =>
+                navigationOptions(navigation),
             },
-            {
-              defaultNavigationOptions: defaultOptions(),
-            }
-          ),
-          navigationOptions: navigationOptions('Pedir Ajuda', 'help'),
+            HelpOrderCreate: {
+              screen: HelpOrderCreate,
+              navigationOptions: ({ navigation }) =>
+                navigationOptionsBack(navigation),
+            },
+            HelpOrderResponse: {
+              screen: HelpOrderResponse,
+              navigationOptions: ({ navigation }) =>
+                navigationOptionsBack(navigation),
+            },
+          }),
+          navigationOptions: defaultOptions('Pedir Ajuda', 'help'),
         },
       },
       {

@@ -13,16 +13,6 @@ import {
   QuestionContentText,
   QuestionText,
 } from './styles';
-import {
-  Bar,
-  BarImage,
-  BarButton,
-  BarText,
-  IconLeftButton,
-  IconLeft,
-} from '~/styles/HeaderStyle';
-
-import headerlogo from '~/assets/halter.png';
 
 export default function HelpOrderResponse({ navigation }) {
   const [question, setQuestion] = useState({});
@@ -50,24 +40,6 @@ export default function HelpOrderResponse({ navigation }) {
     </Background>
   );
 }
-
-HelpOrderResponse.navigationOptions = ({ navigation }) => ({
-  header: (
-    <Bar>
-      <IconLeftButton onPress={() => navigation.navigate('HelpOrderList')}>
-        <IconLeft name="chevron-left" size={30} />
-      </IconLeftButton>
-      <BarButton onPress={() => navigation.navigate('HelpOrderList')}>
-        <BarImage source={headerlogo} />
-        <BarText>Gympoint</BarText>
-      </BarButton>
-    </Bar>
-  ),
-  headerStyle: {
-    backgroundColor: '#e3e3e3',
-  },
-  headerTintColor: '#606070',
-});
 
 HelpOrderResponse.propTypes = {
   navigation: PropTypes.shape({

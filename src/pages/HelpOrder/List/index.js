@@ -23,9 +23,6 @@ import {
   CardHeaderResponse,
   CardContent,
 } from './styles';
-import { BarImage, BarButton, BarText } from '~/styles/HeaderStyle';
-
-import headerlogo from '~/assets/halter.png';
 
 export default function HelpOrderList({ navigation }) {
   const dispatch = useDispatch();
@@ -107,19 +104,6 @@ export default function HelpOrderList({ navigation }) {
     </Background>
   );
 }
-
-HelpOrderList.navigationOptions = () => ({
-  header: (
-    <BarButton onPress={() => {}}>
-      <BarImage source={headerlogo} />
-      <BarText>Gympoint</BarText>
-    </BarButton>
-  ),
-  headerStyle: {
-    backgroundColor: '#e3e3e3',
-  },
-  headerTintColor: '#606070',
-});
 
 HelpOrderList.propTypes = {
   navigation: PropTypes.shape({

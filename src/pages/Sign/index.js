@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import AsyncStorage from '@react-native-community/async-storage';
-import { View, Text, Alert } from 'react-native';
+import { Alert } from 'react-native';
 
 import api from '~/services/api';
 
@@ -61,3 +62,9 @@ export default function Sign({ navigation }) {
     </Background>
   );
 }
+
+Sign.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+  }).isRequired,
+};

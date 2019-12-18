@@ -10,16 +10,6 @@ import Background from '~/components/Background';
 import { loadHelpordersRequest } from '~/store/modules/helporder/actions';
 
 import { Container, InputText } from './styles';
-import {
-  Bar,
-  BarImage,
-  BarButton,
-  BarText,
-  IconLeftButton,
-  IconLeft,
-} from '~/styles/HeaderStyle';
-
-import headerlogo from '~/assets/halter.png';
 
 export default function HelpOrderCreate() {
   const dispatch = useDispatch();
@@ -67,21 +57,3 @@ export default function HelpOrderCreate() {
     </Background>
   );
 }
-
-HelpOrderCreate.navigationOptions = ({ navigation }) => ({
-  header: (
-    <Bar>
-      <IconLeftButton onPress={() => navigation.navigate('HelpOrderList')}>
-        <IconLeft name="chevron-left" size={30} />
-      </IconLeftButton>
-      <BarButton onPress={() => navigation.navigate('HelpOrderList')}>
-        <BarImage source={headerlogo} />
-        <BarText>Gympoint</BarText>
-      </BarButton>
-    </Bar>
-  ),
-  headerStyle: {
-    backgroundColor: '#e3e3e3',
-  },
-  headerTintColor: '#606070',
-});
