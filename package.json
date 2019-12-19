@@ -39,6 +39,9 @@
     "@babel/core": "^7.7.2",
     "@babel/runtime": "^7.7.2",
     "@react-native-community/eslint-config": "^0.0.5",
+    "@testing-library/jest-native": "^3.1.0",
+    "@testing-library/react-native": "^5.0.3",
+    "@types/jest": "^24.0.24",
     "babel-eslint": "^10.0.3",
     "babel-jest": "^24.9.0",
     "babel-plugin-root-import": "^6.4.1",
@@ -54,9 +57,27 @@
     "jest": "^24.9.0",
     "metro-react-native-babel-preset": "^0.57.0",
     "prettier": "^1.19.1",
-    "react-test-renderer": "16.9.0"
+    "react-test-renderer": "16.9.0",
+    "redux-mock-store": "^1.5.4"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "@testing-library/react-native",
+    "transformIgnorePatterns": [
+      "node_modules/(?!(jest-)?react-native|react-navigation|@react-native-community|react-navigation-redux-helpers|@react-navigation/.*)"
+    ],
+    "setupFilesAfterEnv": [
+      "@testing-library/jest-native/extend-expect",
+      "./node_modules/react-native-gesture-handler/jestSetup.js"
+    ],
+    "testMatch": [
+      "**/__tests__/**/*.test.js"
+    ],
+    "collectCoverageFrom": [
+      "!src/service/api.js"
+    ],
+    "coverageDirectory": "__tests__/coverage",
+    "moduleNameMapper": {
+      "^~/(.*)": "<rootDir>/src/$1"
+    }
   }
 }

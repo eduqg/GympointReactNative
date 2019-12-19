@@ -7,6 +7,45 @@
 1. Ubuntu 18.04 LTS
 2. Celular Android 8.0
 
+## Características do software
+
+### Funcionalidades
+
+* Entrar como estudante.
+* Sair.
+* Pedir auxílio.
+* Listar pedidos de auxílio feitos.
+* Fazer Checkin.
+* Listar Checkins.
+* Navegação com header.
+* Toasts de feedback.
+
+### Tecnologias principais
+
+* Redux.
+* Redux-saga.
+* Redux persist.
+* Somente Functional Components.
+* Utilização de React Hooks.
+* Axios.
+* Integrado ao backend Gympoint em Node.js.
+* Prettier, EditorConfig e Prettier para estilizações de código.
+* Utilização de date-fns.
+
+## Imagens do Aplicativo
+
+Entrar
+
+<img src="./src/assets/login.jpeg" width="45%" height="45%">
+
+Pedidos de auxílio
+
+<img src="./src/assets/helps.jpeg"  width="32%" height="32%"><img src="./src/assets/question.jpeg"  width="32%" height="32%"><img src="./src/assets/response.jpeg"  width="32%" height="32%">
+
+Checkin
+
+<img src="./src/assets/checkins.jpeg" width="45%" height="45%"><img src="./src/assets/checkinout.jpeg" width="45%" height="45%">
+
 ## Instalação e Execução
 
 É pré-requisito configurar o [backend da aplicação](https://github.com/eduqg/GympointBack) para a execução deste projeto.
@@ -66,42 +105,10 @@ Em outro terminal, instale o aplicativo.
 react-native run-android
 ```
 
-## Características do software
+## Testes
 
-### Funcionalidades
+Execute os testes da aplicação.
 
-* Entrar como estudante.
-* Sair.
-* Pedir auxílio.
-* Listar pedidos de auxílio feitos.
-* Fazer Checkin.
-* Listar Checkins.
-* Navegação com header.
-* Toasts de feedback.
-
-### Tecnologias principais
-
-* Redux.
-* Redux-saga.
-* Redux persist.
-* Somente Functional Components.
-* Utilização de React Hooks.
-* Axios.
-* Integrado ao backend Gympoint em Node.js.
-* Prettier, EditorConfig e Prettier para estilizações de código.
-* Utilização de date-fns.
-
-
-## Imagens
-
-Entrar
-
-<img src="./src/assets/login.jpeg" width="45%" height="45%">
-
-Pedidos de auxílio
-
-<img src="./src/assets/helps.jpeg"  width="32%" height="32%"><img src="./src/assets/question.jpeg"  width="32%" height="32%"><img src="./src/assets/response.jpeg"  width="32%" height="32%">
-
-Checkin
-
-<img src="./src/assets/checkins.jpeg" width="45%" height="45%"><img src="./src/assets/checkinout.jpeg" width="45%" height="45%">
+```console
+yarn test
+```
