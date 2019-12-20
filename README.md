@@ -7,6 +7,41 @@
 1. Ubuntu 18.04 LTS
 2. Celular Android 8.0
 
+## Getting Started
+
+É pré-requisito configurar o [Backend da Aplicação](https://github.com/eduqg/GympointBack) para a execução deste projeto.
+
+Clone este repositório e na pasta raiz instale as dependências do projeto.
+
+```console
+yarn
+```
+
+Configure o arquivo .env com seu ip ou com localhost.
+
+Caso queira configurar o desenvolvimento via wifi, consulte o arquivo de [Configuração via Wifi](WifiPhoneConfiguration.md).
+
+Execute o metro bundler.
+
+```console
+yarn start
+```
+
+Em um outro terminal, instale o aplicativo.
+
+```console
+react-native run-android
+```
+
+## Testes
+
+Execute os testes da aplicação. A primeira execução pode demorar.
+
+```console
+yarn test
+```
+
+
 ## Características do software
 
 ### Funcionalidades
@@ -46,69 +81,3 @@ Checkin
 
 <img src="./src/assets/checkins.jpeg" width="45%" height="45%"><img src="./src/assets/checkinout.jpeg" width="45%" height="45%">
 
-## Instalação e Execução
-
-É pré-requisito configurar o [backend da aplicação](https://github.com/eduqg/GympointBack) para a execução deste projeto.
-
-Clone este repositório e na pasta raiz instale as dependências do projeto.
-
-```console
-yarn
-```
-
-Cheque se o seu celular e seu computador estão no mesmo wifi.
-
-Conecte seu celular com um cabo usb no computador.
-
-Obtenha seu ip com o seguinte comando:
-
-```console
-ifconfig | grep "inet "
-```
-
-Na pasta raiz crie um arquivo .env e insira o seu ip da seguinte forma.
-
-```console
-MY_IP=192.xxx.x.xx
-```
-
-Em um terminal, execute o metro bundler.
-```console
-yarn start
-```
-
-Em um outro terminal, instale a aplicação.
-```console
-react-native run-android
-```
-
-Na tela da aplicação, mesmo que ocorra algum erro, cachoalhe-o , abra as configuração e defina o ip e a porta que serão utilizadas.
-```console
-192.xxx.x.xx:8081
-```
-Mapear porta utilizada com adb
-
-```console
-adb reverse tcp:9090 tcp:8081
-```
-
-Abra o reactotron para verificar logs de desenvolvimento se desejar.
-
-Execute o metro bundler novamente.
-
-```console
-yarn start --reset-cache
-```
-
-Em outro terminal, instale o aplicativo.
-```console
-react-native run-android
-```
-
-## Testes
-
-Execute os testes da aplicação.
-
-```console
-yarn test
-```
