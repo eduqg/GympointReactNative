@@ -3,11 +3,15 @@ import { render } from '@testing-library/react-native';
 import configureMockStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 import createSagaMiddleware from 'redux-saga';
-import { allHelps, userHelps } from '../../__mocks__/helporder/list';
+import { userHelps } from '../../__mocks__/helporder/list';
+
 import HelpOrderList from '~/pages/HelpOrder/List';
+import HelpOrderCreate from '~/pages/HelpOrder/Create';
+import HelpOrderResponse from '~/pages/HelpOrder/Response';
 
 const sagaMiddleware = createSagaMiddleware();
 
+// https://github.com/dmitry-zaets/redux-mock-store/issues/59
 const mockStore = configureMockStore([sagaMiddleware]);
 
 const store = mockStore({
@@ -18,10 +22,15 @@ const store = mockStore({
   },
 });
 
-describe('HelpOrder', () => {
-  it('should render Help Order List', () => {
-    const navigation = { navigate: jest.fn() };
+const navigation = {
+  navigate: jest.fn(),
+  getParam: item => {
+    return userHelps[0];
+  },
+};
 
+describe('HelpOrder List', () => {
+  it('should render Help Order List', () => {
     const { getByText } = render(
       <Provider store={store}>
         <HelpOrderList navigation={navigation} />
@@ -30,5 +39,31 @@ describe('HelpOrder', () => {
 
     expect(getByText('Olá como faço para ficar grandão?')).toBeTruthy();
     expect(getByText('Olá, eu já estou giga?')).toBeTruthy();
+  });
+});
+
+describe('HelpOrder Create', () => {
+  it('should render Help Order List', () => {
+    const { getByText } = render(
+      <Provider store={store}>
+        <HelpOrderCreate navigation={navigation} />
+      </Provider>
+    );
+
+    expect(getByText('Enviar Pedido')).toBeTruthy();
+  });
+});
+
+describe('HelpOrder Response', () => {
+  it('should render Help Order Response', () => {
+    const { getByText, debug } = render(
+      <Provider store={store}>
+        <HelpOrderResponse navigation={navigation} />
+      </Provider>
+    );
+
+    debug();
+
+    expect(getByText('Cara, tem que comer muito peito de frango')).toBeTruthy();
   });
 });
