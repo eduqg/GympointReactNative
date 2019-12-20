@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import AsyncStorage from '@react-native-community/async-storage';
-import { Alert } from 'react-native';
+import { Alert, ScrollView } from 'react-native';
 
 import Button from '~/components/Button';
 import api from '~/services/api';
@@ -42,17 +42,20 @@ export default function HelpOrderCreate() {
   return (
     <Background>
       <Container>
-        <InputText
-          placeholder="Inclua seu pedido de auxílio"
-          value={question}
-          onChangeText={setQuestion}
-          numberOfLines={4}
-          returnKeyType="send"
-          multiline
-        />
-        <Button onPress={() => handleCreateHelp()} loading={false}>
-          <ButtonText>Enviar Pedido</ButtonText>
-        </Button>
+        <ScrollView>
+          <InputText
+            placeholder="Inclua seu pedido de auxílio"
+            value={question}
+            onChangeText={setQuestion}
+            numberOfLines={10}
+            returnKeyType="send"
+            textAlignVertical="top"
+            multiline
+          />
+          <Button onPress={() => handleCreateHelp()} loading={false}>
+            <ButtonText>Enviar Pedido</ButtonText>
+          </Button>
+        </ScrollView>
       </Container>
     </Background>
   );

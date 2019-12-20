@@ -9,10 +9,8 @@ export const Container = styled.View`
 `;
 
 export const InputText = styled(Input)`
-  align-items: flex-start;
-
   background: #fff;
-  height: 250;
+  height: ${Dimensions.get('window').height / 4};
   width: ${Dimensions.get('window').width * 0.9};
 `;
 

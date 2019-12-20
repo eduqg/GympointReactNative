@@ -113,7 +113,7 @@ export default createAppContainer(
         resetOnBlur: true,
         tabBarOptions: {
           // Para que o teclado fique em cima na bottom bar
-          keyboardHidesTabBar: true,
+          keyboardHidesTabBar: false,
           activeTintColor: '#f84e62',
           inactiveTintColor: '#aaa',
           // fundo da tab bar
