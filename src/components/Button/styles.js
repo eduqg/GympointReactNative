@@ -1,10 +1,11 @@
 import styled from 'styled-components/native';
+import { Dimensions } from 'react-native';
 import { RectButton } from 'react-native-gesture-handler';
 // BaseButton outra opção
 
 export const Container = styled(RectButton)`
   height: 46px;
-  width: 82%;
+  width: ${Dimensions.get('window').width * 0.9}
   background: ${props => (props.theme === 'dark' ? '#f84e62' : '#fff')};
   border-radius: 4px;
   margin-top: 15px;

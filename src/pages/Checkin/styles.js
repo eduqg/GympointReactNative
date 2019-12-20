@@ -1,4 +1,5 @@
 import styled from 'styled-components/native';
+import { Dimensions } from 'react-native';
 
 export const Container = styled.View`
   flex: 1;
@@ -8,13 +9,13 @@ export const Container = styled.View`
 
 export const List = styled.FlatList.attrs({
   showsVerticalScrollIndicator: false,
-  contentContainerStyle: { padding: 30 },
+  contentContainerStyle: { padding: 0, marginTop: 16 },
 })``;
 
 export const CheckBar = styled.View`
   background: #fff;
   flex-direction: row;
-  width: 100%;
+  width: ${Dimensions.get('window').width * 0.9};
   min-width: 240;
   justify-content: space-between;
   text-align: center;

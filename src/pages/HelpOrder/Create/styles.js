@@ -1,4 +1,5 @@
 import styled from 'styled-components/native';
+import { Dimensions } from 'react-native';
 import Input from '~/components/Input';
 
 export const Container = styled.View`
@@ -12,6 +13,7 @@ export const InputText = styled(Input)`
 
   background: #fff;
   height: 250;
+  width: ${Dimensions.get('window').width * 0.9};
 `;
 
 export const ButtonText = styled.Text`

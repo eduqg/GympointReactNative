@@ -99,7 +99,7 @@ export default function HelpOrderList({ navigation }) {
           )}
         />
 
-        <Button onPress={logout} loading={false} theme="outline" width={50}>
+        <Button onPress={logout} loading={false} theme="outline" width={60}>
           <Icon name="exit-to-app" size={24} color="#c7c7c7" />
         </Button>
       </Container>

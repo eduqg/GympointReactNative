@@ -1,4 +1,5 @@
 import styled from 'styled-components/native';
+import { Dimensions } from 'react-native';
 
 export const Container = styled.View`
   padding: 0 15px;
@@ -10,12 +11,13 @@ export const Container = styled.View`
 
   flex-direction: row;
   align-items: center;
+  width: ${Dimensions.get('window').width * 0.9};
 `;
 
 export const TInput = styled.TextInput.attrs({
   placeholderTextColor: 'rgba(0,0,0,0.2)',
 })`
-  flex: 0.8;
+  flex: 1;
   font-size: 15px;
   color: rgba(0, 0, 0, 0.6);
 `;

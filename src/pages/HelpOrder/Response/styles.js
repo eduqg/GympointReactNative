@@ -1,4 +1,5 @@
 import styled from 'styled-components/native';
+import { Dimensions } from 'react-native';
 
 export const Container = styled.View`
   flex: 1;
@@ -13,8 +14,7 @@ export const QuestionCard = styled.View`
   border-radius: 5;
   padding-vertical: 20;
   padding-horizontal: 20;
-  width: 100%;
-  max-width: 300;
+  width: ${Dimensions.get('window').width * 0.9};
 `;
 
 export const QuestionHeader = styled.View`
