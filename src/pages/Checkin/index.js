@@ -65,8 +65,7 @@ export default function Checkin() {
   return (
     <Background>
       <Container>
-        {loading ? <LoadingCheckings>Carregando...</LoadingCheckings> : null}
-        <Button onPress={() => handleCreateCheckin()} loading={false}>
+        <Button onPress={() => handleCreateCheckin()} loading={loading}>
           <ButtonText>Novo check-in</ButtonText>
         </Button>
         <NumberCheckins>

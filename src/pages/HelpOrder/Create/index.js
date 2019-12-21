@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import AsyncStorage from '@react-native-community/async-storage';
 import { Alert, ScrollView } from 'react-native';
 
@@ -14,6 +14,7 @@ import { Container, InputText, ButtonText } from './styles';
 export default function HelpOrderCreate() {
   const dispatch = useDispatch();
   const [question, setQuestion] = useState('');
+  const loading = useSelector(state => state.helporder.loading);
 
   function handleCreateHelp() {
     // Fazer a criação de um help
@@ -52,7 +53,7 @@ export default function HelpOrderCreate() {
             textAlignVertical="top"
             multiline
           />
-          <Button onPress={() => handleCreateHelp()} loading={false}>
+          <Button onPress={() => handleCreateHelp()} loading={loading}>
             <ButtonText>Enviar Pedido</ButtonText>
           </Button>
         </ScrollView>
