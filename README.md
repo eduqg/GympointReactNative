@@ -2,6 +2,8 @@
 
 ## Desafio Final Rocketseat GoStack React Native
 
+<img src="./src/assets/demonstration.gif" width="500" />
+
 ## Equipamento Utilizado
 
 1. Ubuntu 18.04 LTS
@@ -66,7 +68,7 @@ yarn test
 * Integrado ao backend Gympoint em Node.js.
 * Prettier, EditorConfig e Prettier para estilizações de código.
 * Utilização de date-fns.
-
+<!--
 ## Imagens do Aplicativo
 
 Entrar
@@ -81,3 +83,4 @@ Checkin
 
 <img src="./src/assets/checkins.jpeg" width="45%" height="45%"><img src="./src/assets/checkinout.jpeg" width="45%" height="45%">
 
+-->
