@@ -19,9 +19,14 @@ Clone este repositório e na pasta raiz instale as dependências do projeto.
 yarn
 ```
 
+Caso queira configurar o desenvolvimento via wifi, consulte o arquivo de [Configuração via Wifi](WifiPhoneConfiguration.md) (Recomendado).
+
+
 Configure o arquivo .env com seu ip ou com localhost.
 
-Caso queira configurar o desenvolvimento via wifi, consulte o arquivo de [Configuração via Wifi](WifiPhoneConfiguration.md).
+```console
+cp .env-example .env
+```
 
 Execute o metro bundler.
 
