@@ -11,7 +11,7 @@
 
 ## Getting Started
 
-É pré-requisito configurar o [Backend da Aplicação](https://github.com/eduqg/GympointBack) para a execução deste projeto.
+É pré-requisito configurar o [Backend da Aplicação](https://github.com/eduqg/GympointBack) para a execução deste projeto. A seed disponivel no backend possui estudantes pré configurados.
 
 Clone este repositório e na pasta raiz instale as dependências do projeto.
 
@@ -47,7 +47,6 @@ Execute os testes da aplicação. A primeira execução pode demorar.
 ```console
 yarn test
 ```
-
 
 ## Características do software
 
